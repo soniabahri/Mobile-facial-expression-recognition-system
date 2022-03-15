@@ -39,6 +39,8 @@ class Camera extends StatefulWidget {
 class _CameraState extends State<Camera> {
   late CameraController controller ;
   final _faceDetector = GoogleMlKit.vision.faceDetector();
+  double smile = 0.0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -67,14 +69,13 @@ class _CameraState extends State<Camera> {
     return (controller.value.isInitialized)?Column(children: [
         Container(child: CameraPreview(controller), height: size.height*0.8, width: size.width,),
         StreamBuilder(builder: (context, snapshot){
-          return Text("${snapshot.data}");
+          return Text("$smile");
         }, stream: process(),)
     ],): Text("pls wait");
 
   }
   Stream<double>process() async*{
 
-    double smile = 0.0;
 
     WriteBuffer allBytes = WriteBuffer();
 
