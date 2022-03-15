@@ -93,7 +93,7 @@ class _CameraState extends State<Camera> {
 
 
 
-      //Uint8List bytes = allBytes.done().buffer.asUint8List();
+      Uint8List bytes = allBytes.done().buffer.asUint8List();
 
       final planeData = image.planes.map(
             (Plane plane) {
